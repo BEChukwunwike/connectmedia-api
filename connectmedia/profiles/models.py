@@ -24,9 +24,11 @@ class Profile(models.Model):
             """Return name and username."""
             return f"{self.owner}'s profile"
 
+
 def create_profile(sender, instance, created, **kwargs):
     """Create profile when user is created."""
     if created:
         Profile.objects.create(owner=instance)
+
 
 post_save.connect(create_profile, sender=User)
