@@ -8,6 +8,8 @@ Using the repository:
 git clone https://github.com/BEChukwunwike/connectmedia-api.git
 ```
 
+Setup a virtual environment by using: `python -m venv your_virtual_env_name`
+
 Install the requirements programs by:
 
 ```bash
@@ -18,10 +20,12 @@ Create a Clourdinary and Postgres accounts for storing media and database as to 
 
 Create a `.env` or `env.py` file in the project root directory to store the specified variables
 
+Create Django superuserL `python manage.py createsuperuser`, and follow the screen instructions
+
 To run the program, `cd` to `connectmedia` directory and run
 
 ```bash
 python manage.py runserver
 ```
 
-Available routes include: `/comments`, `/followers`, `/likes`, `/posts`, `/profiles`
+Available routes include: `/admin`, `/comments`, `/followers`, `/likes`, `/posts`, `/profiles`
