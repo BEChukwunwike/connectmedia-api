@@ -10,7 +10,7 @@ from connectmedia.permissions import IsOwnerOrReadOnly
 class ProfileList(APIView):
     def get(self, request):
         profiles = Profile.objects.all()
-        serializer = ProfileSerializers(profiles, many=True)
+        serializer = ProfileSerializers(profiles, many=True, context={'request': request} )
         return Response(serializer.data)
     
 
@@ -27,12 +27,12 @@ class ProfileDetail(APIView):
         
     def get(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializers(profile)
+        serializer = ProfileSerializers(profile, context={'request': request} )
         return Response(serializer.data)
     
     def put(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializers(profile, data=request.data)
+        serializer = ProfileSerializers(profile, data=request.data, context={'request': request} )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
