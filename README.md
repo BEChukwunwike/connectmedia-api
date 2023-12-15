@@ -1,4 +1,4 @@
-# Team Awesome Webstack_Portfolio_Project
+# Team Awesome Webstack_Portfolio_Project - ConnectMedia-API
 
 <img src="https://www.onpipeline.com/wp-content/uploads/api-home.png" alt="Logo" width="25%" style="display: block; margin: auto;">
 
