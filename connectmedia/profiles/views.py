@@ -14,7 +14,7 @@ class ProfileList(APIView):
     def get(self, request):
         """Get all profiles."""
         profiles = Profile.objects.all()
-        serializer = ProfileSerializer(profiles, many=True)
+        serializer = ProfileSerializers(profiles, many=True)
         return Response(serializer.data)
 
 
@@ -35,13 +35,13 @@ class ProfileDetail(APIView):
     def get(self, request, pk):
         """Get a profile."""
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile)
+        serializer = ProfileSerializers(profile)
         return Response(serializer.data)
 
     def put(self, request, pk):
         """Update a profile."""
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile, data=request.data)
+        serializer = ProfileSerializers(profile, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
