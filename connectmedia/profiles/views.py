@@ -14,7 +14,7 @@ class ProfileList(APIView):
     def get(self, request):
         """Get all profiles."""
         profiles = Profile.objects.all()
-        serializer = ProfileSerializers(profiles, many=True)
+        serializer = ProfileSerializer(profiles, many=True, context={'request': request})
         return Response(serializer.data)
 
 
@@ -35,21 +35,14 @@ class ProfileDetail(APIView):
     def get(self, request, pk):
         """Get a profile."""
         profile = self.get_object(pk)
-        serializer = ProfileSerializers(profile)
+        serializer = ProfileSerializer(profile, context={'request': request})
         return Response(serializer.data)
 
     def put(self, request, pk):
         """Update a profile."""
         profile = self.get_object(pk)
-        serializer = ProfileSerializers(profile, data=request.data)
+        serializer = ProfileSerializer(profile, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        # delete the object by its primary key (id).
-
-    def delete(self, request, pk):
-        """Delete a profile."""
-        profile = self.get_object(pk)
-        profile.delete()
-        return Response({"message": "Successfully deleted!"}, status=200)
