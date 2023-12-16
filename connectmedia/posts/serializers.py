@@ -5,10 +5,10 @@ from posts.models import Post
 
 class PostSerializer(serializers.ModelSerializer):
     """Post model serializer."""
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    profile_picture = serializers.ReadOnlyField(source='owner.profile.picture.url')
+    profile_id = serializers.ReadOnlyField(source="owner.profile.id")
+    profile_picture = serializers.ReadOnlyField(source="owner.profile.picture.url")
 
     def validate_picture(self, value):
         """Validate picture"""

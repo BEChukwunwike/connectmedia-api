@@ -1,6 +1,7 @@
+"""Posts models."""
 from django.db import models
-from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Post(models.Model):
@@ -31,11 +32,10 @@ class Post(models.Model):
         ('uaeconnect', 'UAE'),
         ('egconnect', 'Egypt'),
     ]
-
-     # Sort the list alphabetically by the second item in the tuple
+    # Sort the list alphabetically by the second item in the tuple
     image_filter_choices.sort(key=lambda x: x[1])
 
-    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=100, blank=True)
@@ -44,7 +44,7 @@ class Post(models.Model):
         upload_to="images/", default="../default_post_zuk6nv", blank=True
     )
     image_filter = models.CharField(
-        max_length=100, choices=image_filter_choices, default='_2023'
+        max_length=100, choices=image_filter_choices, default='normal'
     )
 
     class Meta:
