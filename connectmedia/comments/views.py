@@ -1,4 +1,3 @@
-#from django.shortcuts import render
 from rest_framework import generics, permissions
 from connectmedia.permissions import IsOwnerOrReadOnly
 from .models import Comment
@@ -13,7 +12,7 @@ class CommentList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
 
-    def perfoem_create(self.Serializer):
+    def perform_create(self, Serializer):
         serializer.save(owner=self.request.user)
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
