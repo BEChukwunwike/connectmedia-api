@@ -49,15 +49,13 @@ python manage.py runserver
 ```
 
 ## Available Routes
-<ul>
-    <li> <b>/admin</b>: Django admin panel.</li>
-    <li><b>/comments</b>: Endpoint for managing comments.</li>
-    <li><b>/followers</b>: Endpoint for managing followers.</li>
-    <li><b>/likes</b>: Endpoint for managing likes.</li>
-    <li><b>/posts</b>: Endpoint for managing posts.</li>
-    <li><b>/profiles</b>: Endpoint for managing user profiles.</li>
-</ul>
+* /admin : Django admin panel.
+* /comments : Endpoint for managing comments.
+* /followers : Endpoint for managing followers.
+* /likes : Endpoint for managing likes.
+* /posts : Endpoint for managing posts.
+* /profiles : Endpoint for managing user profiles.
 
+All with the ability to perform CRUD functionalties through the backend and also the frontend.
 Feel free to explore and interact with these routes as needed for your application.
-
 Thank you for using ConnectMedia-API! If you have any questions or issues, please don't hesitate to reach out.
