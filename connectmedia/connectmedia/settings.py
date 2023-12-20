@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
-import dj_database_url
 from pathlib import Path
+import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -61,7 +61,18 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://localhost:8000", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "https://localhost:8000",
+    "localhost", "127.0.0.1",
+    "https://connectmedia-api.herokuapp.com",
+]
+
+CORS_ALLOW_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -84,6 +95,9 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "dj_rest_auth.registration",
+    "corsheaders",
+    "psycopg2",
+    "gunicorn",
     "profiles",
     "posts",
     "comments",
@@ -94,6 +108,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "allauth.account.middleware.AccountMiddleware",
@@ -143,9 +158,7 @@ if "DEV" in os.environ:
     }
 else:
     database_url = os.getenv("DATABASE_URL") or ""
-    DATABASES = {
-        "default": dj_database_url.parse(database_url)
-    }
+    DATABASES = {"default": dj_database_url.parse(database_url)}
 
 
 # Password validation
