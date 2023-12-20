@@ -39,6 +39,15 @@ if "DEV" not in os.environ:
         "rest_framework.renderers.JSONRenderer",
     ]
 
+REST_USE_JWT = True
+JWT_AUTH_SET_COOKIE = True
+JWT_AUTH_COOKIE = "connectmedia_jwt"
+JWT_AUTH_REFRESH_COOKIE = "connectmedia_jwt_refresh"
+
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "connectmedia.serializers.CurrentUserSerializer",
+}
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
