@@ -44,6 +44,9 @@ REST_USE_JWT = True
 JWT_AUTH_SET_COOKIE = True
 JWT_AUTH_COOKIE = "connectmedia_jwt"
 JWT_AUTH_REFRESH_COOKIE = "connectmedia_jwt_refresh"
+JWT_AUTH_SAMESITE = None
+JWT_AUTH_SECURE = True
+
 
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "connectmedia.serializers.CurrentUserSerializer",
