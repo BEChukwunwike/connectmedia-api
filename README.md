@@ -56,6 +56,6 @@ python manage.py runserver
 * `/posts` : Endpoint for managing posts.
 * `/profiles` : Endpoint for managing user profiles.
 
-All with the ability to perform CRUD functionalties through the backend and also the frontend.
+All with the ability to perform CRUD functionalties through the backend and also the frontend when created.
 Feel free to explore and interact with these routes as needed for your application.
 Thank you for using ConnectMedia-API! If you have any questions or issues, please don't hesitate to reach out.
