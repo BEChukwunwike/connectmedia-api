@@ -40,12 +40,24 @@ Create Django superuser:
 python manage.py createsuperuser
 ```
 
+or
+
+```bash
+python3 manage.py createsuperuser
+```
+
 and follow the screen instructions
 
 To run the program, `cd` to `connectmedia` directory and run
 
 ```bash
 python manage.py runserver
+```
+
+or
+
+```bash
+python3 manage.py runserver
 ```
 
 ## Available Routes
