@@ -24,8 +24,6 @@ Install the requirements programs by:
 pip install -r requirements.txt
 ```
 
-or
-
 ```bash
 pip3 install -r requirements.txt
 ```
@@ -40,8 +38,6 @@ Create Django superuser:
 python manage.py createsuperuser
 ```
 
-or
-
 ```bash
 python3 manage.py createsuperuser
 ```
@@ -53,8 +49,6 @@ To run the program, `cd` to `connectmedia` directory and run
 ```bash
 python manage.py runserver
 ```
-
-or
 
 ```bash
 python3 manage.py runserver
