@@ -1,6 +1,8 @@
+"""Comments models"""
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
+
 
 # Create your models here.
 class Comment(models.Model):
@@ -14,7 +16,9 @@ class Comment(models.Model):
     content = models.TextField()
 
     class Meta:
+        """Meta class"""
         ordering = ['-created_at']
 
     def __str__(self):
-        return self.content
+        """Return comment content"""
+        return str(self.content)
