@@ -1,3 +1,4 @@
+"""This module defines the URL patterns for the followers app."""
 from django.urls import path
 from followers import views
 

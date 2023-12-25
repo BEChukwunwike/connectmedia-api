@@ -1,25 +1,26 @@
+"""Followers views."""
 from rest_framework import generics, permissions
+from followers.models import Follower
+from followers.serializers import FollowerSerializer
 from connectmedia.permissions import IsOwnerOrReadOnly
-from .models import Follower
-from .serializers import FollowerSerializer
 
 
+# Create your views here.
 class FollowerList(generics.ListCreateAPIView):
-    """
-    List all followers
-    """
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    """Follower list view."""
+
     queryset = Follower.objects.all()
     serializer_class = FollowerSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
+        """Perform create."""
         serializer.save(owner=self.request.user)
 
 
 class FollowerDetail(generics.RetrieveDestroyAPIView):
-    """
-    Retrieve and delete a follower
-    """
-    permission_classes = [IsOwnerOrReadOnly]
+    """Follower detail view."""
+
     queryset = Follower.objects.all()
     serializer_class = FollowerSerializer
+    permission_classes = [IsOwnerOrReadOnly]
