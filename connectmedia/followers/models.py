@@ -1,3 +1,4 @@
+"""Followers models."""
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -15,6 +16,7 @@ class Follower(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        """Meta options."""
         ordering = ['-created_at']
         unique_together = ['owner', 'followed']
 
