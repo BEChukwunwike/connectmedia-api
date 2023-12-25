@@ -1,25 +1,26 @@
+"""Likes views."""
 from rest_framework import generics, permissions
-from connectmedia.permissions import IsOwnerOrReadOnly
 from likes.models import Like
 from likes.serializers import LikeSerializer
+from connectmedia.permissions import IsOwnerOrReadOnly
 
 
+# Create your views here.
 class LikeList(generics.ListCreateAPIView):
-    """
-    To list likes or create a like if logged in.
-    """
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = LikeSerializer
+    """Like list view."""
+
     queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
+        """Perform create."""
         serializer.save(owner=self.request.user)
 
 
-class LikeDetail(generics.RetrieveDestroyAPIView):
-    """
-    Retrieves a like or delete by its ID only if you own it.
-    """
-    permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = LikeSerializer
+class LikeDetail(generics.RetrieveUpdateDestroyAPIView):
+    """Like detail view."""
+
     queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+    permission_classes = [IsOwnerOrReadOnly]
