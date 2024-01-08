@@ -65,8 +65,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://localhost:8000",
-    "localhost", "127.0.0.1",
+    "127.0.0.1",
     "https://connectmedia-api.herokuapp.com",
 ]
 
