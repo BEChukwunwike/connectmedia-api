@@ -67,6 +67,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "https://connectmedia-api.herokuapp.com",
+    "connectmedia-api-96e8d4878d86.herokuapp.com",
 ]
 
 CORS_ALLOW_ORIGINS = [
